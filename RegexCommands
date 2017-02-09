@@ -1,0 +1,34 @@
+
+Public Function isRegExMatch(userPat As String, text As String)
+
+Dim regex As Object
+Set regex = CreateObject("VBScript.RegExp")
+
+With regex
+  .pattern = userPat
+End With
+     
+
+isRegExMatch = regex.Test(text)
+End Function
+
+
+Public Function findRegExMatch(userPat As String, text As String)
+s = ""
+Dim result As String
+Dim regex As Object
+
+Set regex = CreateObject("VBScript.RegExp")
+
+Dim allMatches As Object
+
+With regex
+  .pattern = userPat
+  .Global = True
+End With
+
+Set allMatches = regex.Execute(text)
+
+
+findRegExMatch = allMatches(0).Value
+End Function
